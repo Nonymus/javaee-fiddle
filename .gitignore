@@ -2,6 +2,10 @@
 .classpath
 .settings/
 .project
+.factorypath
+.tern-project
 
 # maven build folder
 target/
+
+
