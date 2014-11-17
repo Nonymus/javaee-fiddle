@@ -36,4 +36,8 @@ public class AsyncStarter implements Serializable {
 		this.setRunning(true);
 		log.info("Started " + JOBS);
 	}
+	
+	public void stopJobs() {
+		observer.cancelAll();
+	}
 }

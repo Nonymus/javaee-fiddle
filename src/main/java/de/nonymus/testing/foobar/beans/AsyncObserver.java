@@ -22,4 +22,14 @@ public class AsyncObserver {
 		jobs.put(id, handle);
 		log.info("Added job id " + id);
 	}
+	
+	public void cancelAll() {
+		int canceld = 0;
+		for (Future<String> job : jobs.values()) {
+			if (job.cancel(false)) {
+				canceld++;
+			}
+		}
+		log.info("Canceld " + canceld + " jobs");
+	}
 }
