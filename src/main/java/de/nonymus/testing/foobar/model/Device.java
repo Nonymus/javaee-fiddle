@@ -6,15 +6,12 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "device.findAll", query = "SELECT d FROM Device d") })
 public class Device {
 
     @Id

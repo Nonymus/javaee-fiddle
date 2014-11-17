@@ -6,14 +6,7 @@
 </head>
 <body>
   <h:form prependId="false">
-    <label id="label-1">Name:</label>
-    <h:inputText value="#{devices.device.name}" />
-    <h:commandButton value="Speichern" action="#{devices.save()}" />
-    <h:commandButton value="Add Var" action="#{devices.createVar()}" />
-    <label id="label-2">VarText:</label>
-    <h:inputText value="#{devices.varText}" />
-    <h:commandButton value="Add value" action="#{devices.setVarValue()}" />
+    <h:commandButton action="#{asyncStarter.startJobs()}" value="Start Jobs" />
   </h:form>
-
 </body>
 </html>

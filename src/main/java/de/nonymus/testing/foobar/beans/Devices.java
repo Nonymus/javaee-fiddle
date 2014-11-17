@@ -52,8 +52,6 @@ public class Devices implements Serializable {
     @PostConstruct
     private void init() {
         this.device = new Device();
-        TypedQuery<Device> q = em.createNamedQuery("device.findAll", Device.class);
-        this.allDevices = q.getResultList();
     }
 
     public void newDevice() {
