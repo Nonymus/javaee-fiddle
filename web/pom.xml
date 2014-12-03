@@ -8,13 +8,24 @@
     <version>1.0</version>
   </parent>
 
-  <artifactId>my-webapp</artifactId>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <artifactId>web</artifactId>
   <packaging>war</packaging>
 
   <name>My Demo Webapp</name>
   <url>http://www.nonymus.de</url>
 
   <dependencies>
+    <dependency>
+      <groupId>de.nonymus.fiddle</groupId>
+      <artifactId>beans</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -24,14 +35,7 @@
   </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/webapp</directory>
-      </resource>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -46,5 +50,14 @@
       </plugin>
     </plugins>
     <finalName>web</finalName>
+    <!-- Just to make Elcipse happy -->
+    <resources>
+      <resource>
+        <directory>src/main/webapp</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
   </build>
 </project>

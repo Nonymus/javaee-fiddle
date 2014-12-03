@@ -9,9 +9,13 @@
     <version>1.0</version>
   </parent>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <artifactId>beans</artifactId>
   <packaging>ejb</packaging>
-  <name>EJB/CDI beans</name>
+  <name>EJB/CDI Beans</name>
 
   <dependencies>
     <dependency>
