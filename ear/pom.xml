@@ -51,9 +51,18 @@
         <artifactId>maven-ear-plugin</artifactId>
         <version>2.9.1</version>
         <configuration>
+          <modules>
+            <webModule>
+              <groupId>de.nonymus.fiddle</groupId>
+              <artifactId>web</artifactId>
+              <contextRoot>/</contextRoot>
+            </webModule>
+          </modules>
           <version>7</version>
           <defaultLibBundleDir>lib</defaultLibBundleDir>
           <finalName>javaee-fiddle</finalName>
+          <skinnyWars>true</skinnyWars>
+          <fileNameMapping>no-version</fileNameMapping>
         </configuration>
       </plugin>
     </plugins>

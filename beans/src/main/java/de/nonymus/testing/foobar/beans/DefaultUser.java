@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -23,8 +23,9 @@ import org.omnifaces.cdi.Startup;
 
 import de.nonymus.testing.foobar.model.User;
 
-@ApplicationScoped
+
 @Startup
+@Singleton
 @Slf4j
 public class DefaultUser {
 

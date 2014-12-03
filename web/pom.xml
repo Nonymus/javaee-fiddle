@@ -50,6 +50,7 @@
       </plugin>
     </plugins>
     <finalName>web</finalName>
+    
     <!-- Just to make Elcipse happy -->
     <resources>
       <resource>

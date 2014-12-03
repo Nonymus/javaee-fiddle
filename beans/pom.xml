@@ -96,5 +96,6 @@
         </configuration>
       </plugin>
     </plugins>
+    <finalName>beans</finalName>
   </build>
 </project>
