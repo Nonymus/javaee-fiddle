@@ -5,3 +5,4 @@
 
 # maven build folder
 target/
+/target/

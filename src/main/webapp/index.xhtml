@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <title></title>
 </head>
 <body>
-  <h:form prependId="false">
-    <h:commandButton action="#{asyncStarter.startJobs()}" value="Start jobs" />
-    <h:commandButton action="#{asyncStarter.stopJobs()}" value="Cancel remaining jobs" />
-  </h:form>
+	<p>Hallo Welt!</p>
+	<h:form>
+		<h:commandButton action="#{actionWrapper.beginCreate()}" value="Start stuff" />
+	</h:form>
+	<h:outputText value="Count: #{actionWrapper.count}" />
 </body>
 </html>
