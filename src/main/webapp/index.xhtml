@@ -9,8 +9,15 @@
 <body>
 	<p>Hallo Welt!</p>
 	<h:form>
-		<h:commandButton action="#{actionWrapper.beginCreate()}" value="Start stuff" />
+		<h:commandButton action="#{actionWrapper.createBulk()}"
+			value="Start bulk w/ one bean call per ET" />
+		<br />
+		<h:commandButton action="#{actionWrapper.createSingles()}"
+			value="Start bulk w/ one bean call and own transaction per ET" />
+		<br />
+		<h:commandButton action="#{actionWrapper.createDirect()}"
+			value="Start bulk w/ one bean call total" />
+		<br />
 	</h:form>
-	<h:outputText value="Count: #{actionWrapper.count}" />
 </body>
 </html>

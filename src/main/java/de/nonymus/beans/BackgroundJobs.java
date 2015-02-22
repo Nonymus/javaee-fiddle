@@ -2,19 +2,12 @@ package de.nonymus.beans;
 
 import java.util.concurrent.Future;
 
-import javax.annotation.Resource;
 import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
-import javax.ejb.SessionContext;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import lombok.extern.slf4j.Slf4j;
-
-import org.apache.commons.lang3.RandomStringUtils;
-
-import de.nonymus.testing.entities.KeyValue;
 
 /**
  * Session Bean implementation class BackgroundJobs
@@ -23,37 +16,42 @@ import de.nonymus.testing.entities.KeyValue;
 @Slf4j
 public class BackgroundJobs {
 
-    public static final int ENTITY_COUNT = 10000;
-
-    @PersistenceContext
-    private EntityManager em;
-
-    @Resource
-    SessionContext ctx;
+    @EJB
+    Jobs jobs;
 
     @Asynchronous
-    public Future<Integer> createEntities() {
-        int done = 0;
+    public Future<Integer> createEntitiesSBulk() {
+        log.info("Start bulk single transaction creation");
         long start = System.currentTimeMillis();
-        log.info("Creating {} entities. Start: {} ", ENTITY_COUNT, start);
-        for (int i = 0; i < ENTITY_COUNT; i++) {
-            if (i % 100 == 0) {
-                if (ctx.wasCancelCalled()) {
-                    log.info("Job was cancelled");
-                    break;
-                } else {
-                    log.info("Creating entity {}", i);
-                }
-            }
-            KeyValue entry = new KeyValue();
-            entry.setKey(RandomStringUtils.randomAscii(30));
-            entry.setValue(RandomStringUtils.randomAscii(200));
-            em.persist(entry);
-            done++;
-        }
+        int count = jobs.createEntitiesBulk();
         long end = System.currentTimeMillis();
         long diff = end - start;
-        log.info("Creation took: {} ms", diff);
-        return new AsyncResult<Integer>(done);
+
+        log.info("Bulk creation took {} ms", diff);
+        return new AsyncResult<Integer>(count);
+    }
+
+    @Asynchronous
+    public Future<Integer> createEntitiesSingle() {
+        log.info("Start bulk one transaction each creation");
+        long start = System.currentTimeMillis();
+        int count = jobs.createEntitiesSingle();
+        long end = System.currentTimeMillis();
+        long diff = end - start;
+
+        log.info("Single creation took {} ms", diff);
+        return new AsyncResult<Integer>(count);
+    }
+    
+    @Asynchronous
+    public Future<Integer> createEntitiesDirect() {
+        log.info("Start bulk single bean call creation");
+        long start = System.currentTimeMillis();
+        int count = jobs.createEntitiesDirect();
+        long end = System.currentTimeMillis();
+        long diff = end - start;
+
+        log.info("Direct creation took {} ms", diff);
+        return new AsyncResult<Integer>(count);
     }
 }

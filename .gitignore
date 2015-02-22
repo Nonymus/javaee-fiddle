@@ -6,3 +6,5 @@
 # maven build folder
 target/
 /target/
+
+.factorypath
