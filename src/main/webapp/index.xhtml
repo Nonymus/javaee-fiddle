@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <title></title>
 </head>
 <body>
-	<p>Hallo Welt!</p>
-	<h:form>
-		<h:commandButton action="#{actionWrapper.createBulk()}"
-			value="Start bulk w/ one bean call per ET" />
-		<br />
-		<h:commandButton action="#{actionWrapper.createSingles()}"
-			value="Start bulk w/ one bean call and own transaction per ET" />
-		<br />
-		<h:commandButton action="#{actionWrapper.createDirect()}"
-			value="Start bulk w/ one bean call total" />
-		<br />
-	</h:form>
+  <p>Hallo Welt!</p>
+  <h:form>
+    <p>Standard transaction (inherited)</p>
+    <h:commandButton action="#{actionWrapper.createBulk()}" value="Start bulk w/ one bean call per ET" />
+    <br />
+    <h:commandButton action="#{actionWrapper.createSingles()}"
+      value="Start bulk w/ one bean call and own transaction per ET" />
+    <br />
+    <h:commandButton action="#{actionWrapper.createDirect()}" value="Start bulk w/ one bean call total" />
+    <br />
+    <p>Wrap in another transaction</p>
+    <h:commandButton action="#{actionWrapper.createBulkUselessTransaction()}" value="Start bulk w/ one bean call per ET" />
+    <br />
+    <h:commandButton action="#{actionWrapper.createSinglesUselessTransaction()}"
+      value="Start bulk w/ one bean call and own transaction per ET" />
+    <br />
+    <h:commandButton action="#{actionWrapper.createDirectUselessTransaction()}"
+      value="Start bulk w/ one bean call total" />
+    <br />
+  </h:form>
 </body>
 </html>

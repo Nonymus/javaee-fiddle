@@ -20,7 +20,7 @@ public class BackgroundJobs {
     Jobs jobs;
 
     @Asynchronous
-    public Future<Integer> createEntitiesSBulk() {
+    public Future<Integer> createEntitiesBulk() {
         log.info("Start bulk single transaction creation");
         long start = System.currentTimeMillis();
         int count = jobs.createEntitiesBulk();
@@ -52,6 +52,42 @@ public class BackgroundJobs {
         long diff = end - start;
 
         log.info("Direct creation took {} ms", diff);
+        return new AsyncResult<Integer>(count);
+    }
+    
+    @Asynchronous
+    public Future<Integer> createEntitiesBulkUselessTransaction() {
+        log.info("Start bulk single bean call creation w/ additonal transaction");
+        long start = System.currentTimeMillis();
+        int count = jobs.createEntitiesBulkUselessTransaction();
+        long end = System.currentTimeMillis();
+        long diff = end - start;
+
+        log.info("Bulk creation w/ additonal transaction took {} ms", diff);
+        return new AsyncResult<Integer>(count);
+    }
+    
+    @Asynchronous
+    public Future<Integer> createEntitiesSingleUselessTransaction() {
+        log.info("Start bulk single bean call creation w/ additonal transaction");
+        long start = System.currentTimeMillis();
+        int count = jobs.createEntitiesSingleUselessTransaction();
+        long end = System.currentTimeMillis();
+        long diff = end - start;
+
+        log.info("Single creation w/ additonal transaction took {} ms", diff);
+        return new AsyncResult<Integer>(count);
+    }
+    
+    @Asynchronous
+    public Future<Integer> createEntitiesDirectUselessTransaction() {
+        log.info("Start bulk single bean call creation w/ additonal transaction");
+        long start = System.currentTimeMillis();
+        int count = jobs.createEntitiesDirectUselessTransaction();
+        long end = System.currentTimeMillis();
+        long diff = end - start;
+
+        log.info("Direct creation w/ additonal transaction took {} ms", diff);
         return new AsyncResult<Integer>(count);
     }
 }

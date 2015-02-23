@@ -4,6 +4,8 @@ import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,7 +20,7 @@ public class Jobs {
 
     @EJB
     Tasks task;
-    
+
     @PersistenceContext
     EntityManager em;
 
@@ -55,4 +57,18 @@ public class Jobs {
         return done;
     }
 
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public int createEntitiesBulkUselessTransaction() {
+        return createEntitiesBulk();
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public int createEntitiesSingleUselessTransaction() {
+        return createEntitiesSingle();
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public int createEntitiesDirectUselessTransaction() {
+        return createEntitiesDirect();
+    }
 }

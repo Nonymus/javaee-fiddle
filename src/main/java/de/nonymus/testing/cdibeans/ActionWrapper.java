@@ -21,7 +21,7 @@ public class ActionWrapper implements Serializable {
     private BackgroundJobs bgJobs;
 
     public void createBulk() {
-        bgJobs.createEntitiesSBulk();
+        bgJobs.createEntitiesBulk();
     }
     
     public void createSingles() {
@@ -30,6 +30,18 @@ public class ActionWrapper implements Serializable {
     
     public void createDirect() {
         bgJobs.createEntitiesDirect();
+    }
+    
+    public void createBulkUselessTransaction() {
+        bgJobs.createEntitiesBulkUselessTransaction();
+    }
+    
+    public void createSinglesUselessTransaction() {
+        bgJobs.createEntitiesSingleUselessTransaction();
+    }
+    
+    public void createDirectUselessTransaction() {
+        bgJobs.createEntitiesDirectUselessTransaction();
     }
     
 }
