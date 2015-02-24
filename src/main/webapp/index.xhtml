@@ -7,23 +7,9 @@
 <body>
   <p>Hallo Welt!</p>
   <h:form>
-    <p>Standard transaction (inherited)</p>
-    <h:commandButton action="#{actionWrapper.createBulk()}" value="Start bulk w/ one bean call per ET" />
-    <br />
-    <h:commandButton action="#{actionWrapper.createSingles()}"
-      value="Start bulk w/ one bean call and own transaction per ET" />
-    <br />
-    <h:commandButton action="#{actionWrapper.createDirect()}" value="Start bulk w/ one bean call total" />
-    <br />
-    <p>Wrap in another transaction</p>
-    <h:commandButton action="#{actionWrapper.createBulkUselessTransaction()}" value="Start bulk w/ one bean call per ET" />
-    <br />
-    <h:commandButton action="#{actionWrapper.createSinglesUselessTransaction()}"
-      value="Start bulk w/ one bean call and own transaction per ET" />
-    <br />
-    <h:commandButton action="#{actionWrapper.createDirectUselessTransaction()}"
-      value="Start bulk w/ one bean call total" />
-    <br />
+    <p>Test KeyValueStore</p>
+    <h:commandButton action="#{actionWrapper.entityTest()}" value="Test Entities" />
+    <h:commandButton action="#{actionWrapper.listEntity()}" value="Get Entity" />
   </h:form>
 </body>
 </html>

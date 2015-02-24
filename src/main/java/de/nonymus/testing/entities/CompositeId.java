@@ -12,6 +12,6 @@ public class CompositeId implements Serializable{
      */
     private static final long serialVersionUID = 1L;
     
-    UUID id;
+    UUID owner;
     String key;
 }

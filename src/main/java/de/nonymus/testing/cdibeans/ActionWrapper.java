@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import de.nonymus.beans.BackgroundJobs;
+import de.nonymus.beans.KeyValueStore;
 
 @SessionScoped
 @Named
@@ -18,30 +18,13 @@ public class ActionWrapper implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private BackgroundJobs bgJobs;
+    private KeyValueStore kvs;
 
-    public void createBulk() {
-        bgJobs.createEntitiesBulk();
+    public void entityTest() {
+        kvs.createTestET();
     }
-    
-    public void createSingles() {
-        bgJobs.createEntitiesSingle();
+
+    public void listEntity() {
+        kvs.loadEntity();
     }
-    
-    public void createDirect() {
-        bgJobs.createEntitiesDirect();
-    }
-    
-    public void createBulkUselessTransaction() {
-        bgJobs.createEntitiesBulkUselessTransaction();
-    }
-    
-    public void createSinglesUselessTransaction() {
-        bgJobs.createEntitiesSingleUselessTransaction();
-    }
-    
-    public void createDirectUselessTransaction() {
-        bgJobs.createEntitiesDirectUselessTransaction();
-    }
-    
 }

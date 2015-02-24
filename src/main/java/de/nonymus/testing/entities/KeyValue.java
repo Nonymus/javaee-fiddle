@@ -1,23 +1,29 @@
 package de.nonymus.testing.entities;
 
-import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import org.hibernate.annotations.Type;
 
 @Entity
 @IdClass(CompositeId.class)
 public class KeyValue {
 
+    public KeyValue() {
+    }
+
+    public KeyValue(Parent parent) {
+        this.owner = parent;
+    }
+
+    @Getter
+    @Setter
     @Id
-    @Type(type="pg-uuid")
-    private UUID id = UUID.randomUUID();
+    @ManyToOne
+    private Parent owner;
 
     @Getter
     @Setter
